@@ -2,6 +2,8 @@ body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     scroll-behavior: smooth;
     transition: background-color 0.4s ease, color 0.4s ease;
+    position: relative;
+    background-color: #f8f9fa;
     
     /* Light Mode Background Image */
     background-image: url('bg-1.png');
@@ -14,6 +16,7 @@ body {
 /* Dark Mode Background Image */
 html.dark body {
     background-image: url('bg-2.png');
+    background-color: #0f0f11;
 }
 
 /* 1. KEYFRAME ANIMATIONS */
