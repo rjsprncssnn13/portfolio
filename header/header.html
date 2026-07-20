@@ -1,0 +1,60 @@
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 px-6 py-4 bg-transparent border-b border-transparent transition-colors duration-300 reveal-init animate-fadeIn">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <!-- Logo (A only) -->
+        <a href="#welcome" class="w-10 h-10 rounded-full bg-zinc-900 text-zinc-100 dark:bg-zinc-100 dark:text-zinc-950 flex items-center justify-center font-bold text-lg tracking-wider transition-all duration-300 hover:scale-105">
+            A
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav class="hidden md:flex items-center bg-zinc-200/50 dark:bg-zinc-900/50 border border-zinc-300/40 dark:border-zinc-800/40 rounded-full px-2 py-1.5 backdrop-blur-sm">
+            <!-- All links now share the exact same clean, hoverable structure -->
+            <a href="#welcome" class="nav-link px-4 py-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 relative transition-all duration-350">
+                Welcome
+                <span class="underline-bar absolute bottom-0 left-4 right-4 h-0.5 bg-zinc-900 dark:bg-zinc-100 rounded-full"></span>
+            </a>
+            <a href="#about" class="nav-link px-4 py-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 relative transition-all duration-350">
+                About
+                <span class="underline-bar absolute bottom-0 left-4 right-4 h-0.5 bg-zinc-900 dark:bg-zinc-100 rounded-full"></span>
+            </a>
+            <a href="#services" class="nav-link px-4 py-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 relative transition-all duration-350">
+                Services
+                <span class="underline-bar absolute bottom-0 left-4 right-4 h-0.5 bg-zinc-900 dark:bg-zinc-100 rounded-full"></span>
+            </a>
+            <a href="#works" class="nav-link px-4 py-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 relative transition-all duration-350">
+                Works
+                <span class="underline-bar absolute bottom-0 left-4 right-4 h-0.5 bg-zinc-900 dark:bg-zinc-100 rounded-full"></span>
+            </a>
+            <a href="#tools" class="nav-link px-4 py-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 relative transition-all duration-350">
+                Tools
+                <span class="underline-bar absolute bottom-0 left-4 right-4 h-0.5 bg-zinc-900 dark:bg-zinc-100 rounded-full"></span>
+            </a>
+            <a href="#contact" class="nav-link px-4 py-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 relative transition-all duration-350">
+                Contact
+                <span class="underline-bar absolute bottom-0 left-4 right-4 h-0.5 bg-zinc-900 dark:bg-zinc-100 rounded-full"></span>
+            </a>
+        </nav>
+
+        <!-- Light/Dark Toggle & Responsive Menu Button -->
+        <div class="flex items-center gap-4">
+            <button id="theme-toggle" class="p-2.5 rounded-full bg-zinc-200/60 dark:bg-zinc-900/60 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300/60 dark:hover:bg-zinc-800/60 transition-colors">
+                <i id="theme-icon" class="fa-solid fa-moon text-lg"></i>
+            </button>
+
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-zinc-700 dark:text-zinc-300 focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-zinc-100/95 dark:bg-darkBg/95 border-b border-zinc-200 dark:border-zinc-800 px-6 py-6 transition-all duration-300 backdrop-blur-md">
+        <nav class="flex flex-col gap-4">
+            <a href="#welcome" class="mobile-nav-link text-lg font-medium text-zinc-900 dark:text-zinc-100">Welcome</a>
+            <a href="#about" class="mobile-nav-link text-lg font-medium text-zinc-500 dark:text-zinc-400">About</a>
+            <a href="#services" class="mobile-nav-link text-lg font-medium text-zinc-500 dark:text-zinc-400">Services</a>
+            <a href="#works" class="mobile-nav-link text-lg font-medium text-zinc-500 dark:text-zinc-400">Works</a>
+            <a href="#tools" class="mobile-nav-link text-lg font-medium text-zinc-500 dark:text-zinc-400">Tools</a>
+            <a href="#contact" class="mobile-nav-link text-lg font-medium text-zinc-500 dark:text-zinc-400">Contacts</a>
+        </nav>
+    </div>
+</header>
