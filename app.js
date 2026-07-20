@@ -22,8 +22,8 @@ function loadHeaderScript() {
         const script = document.createElement('script');
         script.src = 'header/header.js';
         script.onload = () => {
-            setupHeaderInteractivity();
-            setupScrollListener();
+            if (typeof setupHeaderInteractivity === 'function') setupHeaderInteractivity();
+            if (typeof setupScrollListener === 'function') setupScrollListener();
             resolve();
         };
         script.onerror = () => {
@@ -36,7 +36,7 @@ function loadHeaderScript() {
 
 // Initial setup
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Load all structural HTML templates
+    // 1. Load all structural HTML templates concurrently
     await Promise.all([
         loadHTML('header-container', 'header/header.html'),
         loadHTML('welcome-container', 'welcome/welcome.html'),
@@ -56,11 +56,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     worksScript.src = 'works/works.js';
     document.body.appendChild(worksScript);
 
-    // 3. Fade out preloader
+    // 3. Preload background images smoothly to eliminate toggling hitch
+    const bg1 = new Image();
+    bg1.src = 'bg-1.png';
+    const bg2 = new Image();
+    bg2.src = 'bg-2.png';
+
+    // 4. Smoothly fade out preloader and reveal main content simultaneously
     const preloader = document.getElementById('preloader');
+    const mainContent = document.getElementById('main-content');
+
     if (preloader) {
         setTimeout(() => {
             preloader.classList.add('preloader-fade-out');
-        }, 1500); 
+            if (mainContent) {
+                mainContent.classList.remove('opacity-0');
+                mainContent.classList.add('opacity-100', 'transition-opacity', 'duration-700');
+            }
+        }, 400); // Small buffer to ensure DOM paint is ready
     }
 });
