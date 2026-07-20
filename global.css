@@ -1,0 +1,70 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    scroll-behavior: smooth;
+    
+    /* Light Mode Background Image */
+    background-image: url('bg-1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Dark Mode Background Image */
+html.dark body {
+    background-image: url('bg-2.png');
+}
+
+/* 1. KEYFRAME ANIMATIONS */
+@keyframes fadeInUp {
+    0% { 
+        opacity: 0; 
+        transform: translateY(15px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes fadeIn {
+    0% { 
+        opacity: 0; 
+    }
+    100% { 
+        opacity: 1; 
+    }
+}
+
+/* 2. ANIMATION CLASSES */
+.animate-fadeInUp {
+    animation: fadeInUp 1.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-fadeIn {
+    animation: fadeIn 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 3. STAGGERED DELAYS */
+.animate-delay-100 { animation-delay: 200ms; }
+.animate-delay-200 { animation-delay: 450ms; }
+.animate-delay-300 { animation-delay: 700ms; }
+.animate-delay-400 { animation-delay: 950ms; }
+
+.reveal-init {
+    opacity: 0;
+}
+
+/* --- CLEAN NAV UNDERLINE HOVER TRANSITIONS --- */
+/* 1. Keep the bar set to scaleX(0) as its default static appearance */
+.underline-bar {
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+/* 2. ONLY apply the transition styling when the parent link is actually being hovered over */
+.nav-link:hover .underline-bar {
+    transform: scaleX(1);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+

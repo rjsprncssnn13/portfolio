@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annie | Virtual Assistant Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f0f11',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- ================= INSTANT THEME DETECTOR (Prevents Dark Mode Flashing) ================= -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <!-- ========================================================================================= -->
+
+    <!-- Modular Custom CSS Files -->
+    <link rel="stylesheet" href="header/header.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base page rules originally from global.css */
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            background-image: url('bg-1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        html.dark body {
+            background-image: url('bg-2.png');
+        }
+        /* Global Entrance Animations */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .animate-fadeInUp { animation: fadeInUp 1.3s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+        .animate-fadeIn { animation: fadeIn 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+        .animate-delay-100 { animation-delay: 200ms; }
+        .animate-delay-200 { animation-delay: 450ms; }
+        .animate-delay-300 { animation-delay: 700ms; }
+        .animate-delay-400 { animation-delay: 950ms; }
+        .reveal-init { opacity: 0; }
+
+        /* ================= PRELOADER LOADING SCREEN ANIMATIONS ================= */
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        @keyframes progressFill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        .animate-logoPulse {
+            animation: logoPulse 2s infinite ease-in-out;
+        }
+        .animate-progressFill {
+            animation: progressFill 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+        /* Class to fade out preloader smoothly when dynamically triggered */
+        .preloader-fade-out {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            visibility: hidden !important;
+        }
+
+        /* modal's animation */
+        #gallery-modal {
+            transition: opacity 0.2s ease-in-out !important;
+            opacity: 0;
+        }
+
+        #gallery-modal.is-open {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-[url('bg-1.png')] dark:bg-[url('bg-2.png')] bg-cover bg-center bg-no-repeat bg-fixed text-zinc-900 dark:text-zinc-100 transition-all duration-300 min-h-screen flex flex-col justify-between relative selection:bg-zinc-200 dark:selection:bg-zinc-800">
+    
+    <!-- ================= PRELOADER LOADING SCREEN ================= -->
+    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[url('bg-1.png')] dark:bg-[url('bg-2.png')] bg-cover bg-center bg-no-repeat bg-fixed transition-all duration-700 ease-in-out">
+        <div class="flex flex-col items-center space-y-6">
+            <!-- pulsing 'A' logo -->
+            <div class="w-16 h-16 rounded-full bg-zinc-900 text-zinc-100 dark:bg-zinc-100 dark:text-zinc-950 flex items-center justify-center font-bold text-2xl tracking-wider animate-logoPulse">
+                A
+            </div>
+            <!-- progress bar container -->
+            <div class="w-32 h-[2px] bg-zinc-300/40 dark:bg-zinc-800/40 rounded-full overflow-hidden">
+                <div class="h-full bg-zinc-900 dark:bg-zinc-100 rounded-full animate-progressFill"></div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================ -->
+
+    <!-- Container for Header (Loaded Dynamically) -->
+    <div id="header-container"></div>
+
+    <!-- Container for Pages (Loaded Dynamically) -->
+    <main class="w-full flex-grow pt-24">
+        <div id="welcome-container"></div>
+        <div id="about-container"></div>
+        <div id="services-container"></div>
+        <div id="works-container"></div>
+        <div id="tools-container"></div>
+        <div id="contacts-container"></div>
+    </main>
+
+    <!-- Modal for works page -->
+    <div id="gallery-modal" class="hidden fixed inset-0 z-[10000] bg-black/80 flex items-center justify-center p-6" onclick="closeGallery()">
+        <!-- 1. Modal Container -->
+        <div class="bg-white dark:bg-zinc-900 w-full max-w-2xl max-h-[80vh] flex flex-col relative" onclick="event.stopPropagation()">
+            
+            <!-- 2. Header (Always fixed at the top, independent of the scrolling images) -->
+            <div class="flex justify-between items-center p-6 border-b border-zinc-200 dark:border-zinc-800">
+                <h3 class="font-bold text-lg">Project Preview</h3>
+                <button onclick="closeGallery()" class="px-4 py-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-none text-sm font-semibold hover:opacity-80">
+                    Close
+                </button>
+            </div>
+
+            <!-- 3. Scrollable Content Area -->
+            <div id="modal-content" class="overflow-y-auto p-8 space-y-8">
+                <!-- Images and text injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Container for Footer (Loaded Dynamically) -->
+    <div id="footer-container"></div>
+
+    <!-- Custom Modular Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
