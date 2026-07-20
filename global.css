@@ -1,3 +1,4 @@
+/* Base page setup */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     scroll-behavior: smooth;
@@ -12,6 +13,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* Dark Mode Background Image */
@@ -20,10 +22,22 @@ html.dark body {
     background-color: #0f0f11;
 }
 
-@supports (-webkit-touch-callout: intercept) {
-  body {
-    background-attachment: scroll; /* Prevents mobile rendering bugs on iOS/Android */
-  }
+/* Force mobile browsers to lock background layer smoothly and prevent white flashes */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll !important;
+        background-size: cover;
+    }
+}
+
+/* Root background safety layer */
+html {
+    background-color: #f8f9fa;
+    height: 100%;
+}
+
+html.dark {
+    background-color: #0f0f11;
 }
 
 /* 1. KEYFRAME ANIMATIONS */
@@ -78,12 +92,3 @@ html.dark body {
     transform: scaleX(1);
     transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
-html {
-    background-color: #f8f9fa;
-}
-
-html.dark {
-    background-color: #0f0f11;
-}
-
