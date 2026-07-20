@@ -63,13 +63,18 @@ function openGallery(category) {
                 <p class="text-sm text-zinc-600 dark:text-zinc-400 italic">${item.caption}</p>
             </div>
         `).join('');
-
-        // FORCE SCROLL TO TOP EVERY TIME THE MODAL OPENS
-        modalContent.scrollTop = 0;
         
-        // remove hidden class and trigger fade-in animation
+        // Remove hidden class and trigger fade-in animation
         modal.classList.remove('hidden');
         setTimeout(() => modal.classList.add('is-open'), 10);
+
+        // Force scroll to top using a double-frame lock to catch the layout render
+        requestAnimationFrame(() => {
+            modalContent.scrollTop = 0;
+            setTimeout(() => {
+                modalContent.scrollTop = 0;
+            }, 20);
+        });
     }
 }
 
