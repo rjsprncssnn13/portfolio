@@ -2,6 +2,8 @@ body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     scroll-behavior: smooth;
     transition: background-color 0.4s ease, color 0.4s ease;
+    margin: 0;
+    min-height: 100vh;
     position: relative;
     background-color: #f8f9fa;
     
@@ -10,13 +12,18 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 /* Dark Mode Background Image */
 html.dark body {
     background-image: url('bg-2.png');
     background-color: #0f0f11;
+}
+
+@supports (-webkit-touch-callout: intercept) {
+  body {
+    background-attachment: scroll; /* Prevents mobile rendering bugs on iOS/Android */
+  }
 }
 
 /* 1. KEYFRAME ANIMATIONS */
@@ -70,5 +77,13 @@ html.dark body {
 .nav-link:hover .underline-bar {
     transform: scaleX(1);
     transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+html {
+    background-color: #f8f9fa;
+}
+
+html.dark {
+    background-color: #0f0f11;
 }
 
