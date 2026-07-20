@@ -89,6 +89,7 @@ function setupHeaderInteractivity() {
     }
 
     function updateThemeIcon(theme) {
+        if (!themeIcon) return;
         if (theme === 'dark') {
             themeIcon.className = 'fa-solid fa-sun text-lg';
         } else {
@@ -96,7 +97,22 @@ function setupHeaderInteractivity() {
         }
     }
 
-    themeToggleBtn.addEventListener('click', () => {
+    // Unified Theme Toggle Handler with a smooth fade overlay effect
+    const toggleTheme = () => {
+        // Create a temporary flash-prevention overlay for a buttery smooth color swap
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background-color: ${htmlElement.classList.contains('dark') ? '#f8f9fa' : '#0f0f11'};
+            opacity: 1;
+            pointer-events: none;
+            transition: opacity 0.4s ease-in-out;
+        `;
+        document.body.appendChild(overlay);
+
+        // Switch theme class
         if (htmlElement.classList.contains('dark')) {
             htmlElement.classList.remove('dark');
             localStorage.setItem('theme', 'light');
@@ -106,15 +122,27 @@ function setupHeaderInteractivity() {
             localStorage.setItem('theme', 'dark');
             updateThemeIcon('dark');
         }
-    });
+
+        // Fade out the overlay smoothly to reveal the new theme background instantly
+        requestAnimationFrame(() => {
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.remove(), 400);
+        });
+    };
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', toggleTheme);
+    }
 
     // Mobile Navigation Controls
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
 
     // ====================================================
     //  SMOOTH SCROLL ENGINE FOR LINK CLICKS (ALL PAGES)
@@ -145,20 +173,10 @@ function setupHeaderInteractivity() {
     document.querySelectorAll('.mobile-nav-link').forEach(link => {
         link.addEventListener('click', (event) => {
             event.preventDefault(); // Stop the default instant jump
-            mobileMenu.classList.add('hidden'); // Close dropdown menu
+            if (mobileMenu) mobileMenu.classList.add('hidden'); // Close dropdown menu
             
             const targetId = link.getAttribute('href');
             smoothScrollTo(targetId);
         });
     });
-
-    const toggleTheme = () => {
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        }
-    };
 }
