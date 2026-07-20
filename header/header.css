@@ -1,0 +1,27 @@
+/* --- CLEAN NAV UNDERLINE HOVER TRANSITIONS --- */
+/* 1. Keep the bar set to scaleX(0) as its default static appearance */
+.underline-bar {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 2. Apply the hover expansion */
+.nav-link:hover .underline-bar {
+    transform: scaleX(1);
+}
+
+/* 3. ACTIVE STATE: Forced bold font & visible underline */
+.nav-link.active {
+    font-weight: 700 !important; /* Bold */
+    color: rgb(24 24 27) !important; /* text-zinc-900 in light mode */
+}
+
+html.dark .nav-link.active {
+    color: rgb(244 244 245) !important; /* text-zinc-100 in dark mode */
+}
+
+/* Force the underline line to stay open when active */
+.nav-link.active .underline-bar {
+    transform: scaleX(1) !important;
+}
