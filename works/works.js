@@ -31,11 +31,11 @@ function openGallery(category) {
         'lead': [
             { src: 'works/images/lead1.png', caption: 'Finding your potential leads through LinkedIn search filters.' },
             { src: 'works/images/lead2.png', caption: 'Finding contact information from your potential lead’s LinkedIn profile.' },
-            { src: 'works/images/lead3.png', caption: 'Finding your potential leads using HubSpot search filters.' },
-            { src: 'works/images/lead4.png', caption: 'Your leads organized with detailed contact information in HubSpot.' },
-            { src: 'works/images/lead5.png', caption: 'Verifying your leads’ email addresses through HubSpot.' },
-            { src: 'works/images/lead6.png', caption: 'Your lead outreach managed through automated email sequences in HubSpot.' },
-            { src: 'works/images/lead7.png', caption: 'Your lead outreach managed through automated email sequences in HubSpot.' }
+            { src: 'works/images/lead3.png', caption: 'Finding your potential leads using Hunter search filters.' },
+            { src: 'works/images/lead4.png', caption: 'Your leads organized with detailed contact information in Hunter.' },
+            { src: 'works/images/lead5.png', caption: 'Verifying your leads’ email addresses through Hunter.' },
+            { src: 'works/images/lead6.png', caption: 'Your lead outreach managed through automated email sequences in Hunter.' },
+            { src: 'works/images/lead7.png', caption: 'Your lead outreach managed through automated email sequences in Hunter.' }
         ],
         'file': [
             { src: 'works/images/file1.png', caption: 'Your files organized and managed through Google Drive. View my Google Drive sample <a href="https://drive.google.com/drive/folders/1IbBIHAEEOagJklVz92ETd3UfZ945D9Aj?usp=sharing" target="_blank"><b><u>here</u></b></a>.' },
