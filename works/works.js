@@ -45,7 +45,7 @@ function openGallery(category) {
 
         'social': [
             { src: 'works/images/social8.png', caption: 'Your social media posts organized and scheduled in Notion. View my Notion content scheduler sample <a href="https://excited-coneflower-4b3.notion.site/Flex-Fitness-Social-Media-Planner-Go-to-April-2026-in-the-calendar-3239f2381c82802bbfd9c28742673db5" target="_blank"><b><u>here</u></b></a>.' },
-            { src: 'works/images/social1.png', caption: 'Your graphics designed and edited using Canva.' },
+            { src: 'works/images/social1.png', caption: 'Your graphics designed and edited using Canva. Click <a href="https://www.instagram.com/flex.fitness.44/" target="_blank"><b><u>here</u></b></a> to view my sample Instagram account featuring social media graphics I designed and edited using Canva.' },
             { src: 'works/images/social2.png', caption: 'Your graphics designed and edited using Canva.' },
             { src: 'works/images/social3.png', caption: 'Your graphics designed and edited using Canva.' },
             { src: 'works/images/social4.png', caption: 'Your graphics designed and edited using Canva.' },
